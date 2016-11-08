@@ -1,7 +1,6 @@
 class ShadowsocksAccount:
     def __str__(self):
         #print "ShadowsocksAccount"
-        print "ShadowsocksAccount"
         print "server=" + self.server
         print "port=" + self.port
         print "passwd=" + self.passwd

@@ -14,14 +14,15 @@ class Ishadowsocks:
         html_content = html.content
         soup = BeautifulSoup(html_content, "html.parser")
         freeInfo = soup.select("#free .col-sm-4 h4")
+        #print len(freeInfo)
         shadowsocksAccountsList = []
         for i in range(3):
             print i
             account = ShadowsocksAccount()
-            account.server = freeInfo[0].string.rsplit(':', 1)[-1]
-            account.port = freeInfo[1].string.rsplit(':', 1)[-1]
-            account.passwd = freeInfo[2].string.rsplit(':', 1)[-1]
-            account.lockMethod = freeInfo[3].string.rsplit(':', 1)[-1]
+            account.server = freeInfo[0 + 6*i].string.rsplit(':', 1)[-1]
+            account.port = freeInfo[1 + 6*i].string.rsplit(':', 1)[-1]
+            account.passwd = freeInfo[2 + 6*i].string.rsplit(':', 1)[-1]
+            account.lockMethod = freeInfo[3 +6*i].string.rsplit(':', 1)[-1]
             print account
             shadowsocksAccountsList.append(account)
         return shadowsocksAccountsList
