@@ -27,12 +27,12 @@ class SSQRDecode:
         splitStrList = splitStrList[1].split(":", 1)
         account.server = splitStrList[0]
         account.port = splitStrList[1]
-        #print account
+        print account
         return account
 
 if __name__=="__main__":
     print "SSQRDecode----main----in----"
     mSSQRDecode = SSQRDecode()
-    url = "http://api.qrserver.com/v1/read-qr-code/?fileurl=http://www.shadowsocks8.net/images/server01.png"
-    mSSQRDecode.decode(url)
+    fileurl = 'https://freess.cx/images/servers/jp01.png'
+    mSSQRDecode.decode(fileurl)
     print "SSQRDecode----main----out----"
