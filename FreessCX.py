@@ -29,6 +29,8 @@ class FreessCX:
             print account
             shadowsocksAccountsList.append(account)
 
+        return shadowsocksAccountsList
+
 
 if __name__=="__main__":
     print "FreessCX----main----in----"
