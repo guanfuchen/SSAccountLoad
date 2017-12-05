@@ -1,11 +1,15 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+import sys
+ss_account_load_root = '/home/cgf/GitHub/Quick/SSAccountLoad/'
+sys.path.insert(0, ss_account_load_root)
 import json
 import subprocess
 import os
 import time
 import GoIshadowsocks
 import FreessCX
+
 
 if __name__ == '__main__':
     print('SelectSSServer----in----')
@@ -21,7 +25,7 @@ if __name__ == '__main__':
     select_shadow_ping = None
 
     for shadowsocksAccount in shadowsocksAccountsList:
-        batcmd = 'sh netstat_pid.sh'
+        batcmd = 'sh ' + ss_account_load_root + 'netstat_pid.sh'
         res_sslocal_pid_netstat = subprocess.check_output(batcmd, shell=True)
         res_sslocal_pid_netstat = res_sslocal_pid_netstat.strip()
         if res_sslocal_pid_netstat != '':
@@ -31,7 +35,7 @@ if __name__ == '__main__':
         batcmd = 'sudo sslocal -s ' + shadowsocksAccount.server + ' -p ' + shadowsocksAccount.port + ' -l ' + '1082' + ' -k ' + shadowsocksAccount.passwd +  ' -m ' + shadowsocksAccount.lockMethod + ' -d start'
         subprocess.check_output(batcmd, shell=True)
         time.sleep(1)
-        batcmd = 'sh netstat_pid.sh'
+        batcmd = 'sh ' + ss_account_load_root + 'netstat_pid.sh'
         res_sslocal_pid_netstat = subprocess.check_output(batcmd, shell=True)
         res_sslocal_pid_netstat = res_sslocal_pid_netstat.strip()
         print(res_sslocal_pid_netstat)
@@ -40,7 +44,7 @@ if __name__ == '__main__':
         #  print(res_sslocal_pid)
         if res_sslocal_pid_netstat != '':
             try:
-                batcmd = 'sh speedtest.sh'
+                batcmd = 'sh ' + ss_account_load_root + 'speedtest.sh'
                 res = subprocess.check_output(batcmd, shell=True)
                 #  print(res.split('\n'))
                 res_json_str = res.split('\n')[1]
